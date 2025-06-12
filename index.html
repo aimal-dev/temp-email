@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+
+    <!-- font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>temp-email</title>
+  </head>
+
+  <body>
+    <!------------------------------------------------- Header ------------------------------------------------->
+    <div class="pt-2 pb-4" style="background-color: #21232a">
+      <nav class="container navbar navbar-expand-lg justify-content-center">
+        <div class="d-flex w-100 justify-content-between align-items-center">
+          <div class="btn-store">
+            <!-- Left Button -->
+            <button class="btn text-white d-none d-lg-flex">
+              <img src="./assets/img/itunes_header.svg" alt="" /> App Store
+            </button>
+            <button class="btn text-white d-none d-lg-flex">
+              <img src="./assets/img/gplay_header.svg" alt="" /> Google Play
+            </button>
+          </div>
+
+          <!-- Center Logo -->
+          <a
+            class="navbar-brand lg-mx-auto md-mx-auto sm-mx-none d-lg-block text-center"
+            href="#"
+            ><img src="./assets/img/brand-logo.png" alt=""
+          /></a>
+
+          <!-- Right Button -->
+          <div class="btn-store-2">
+            <button class="btn temp d-none d-lg-block">Temp Number 📲</button>
+            <button class="btn prem d-none d-lg-block">Premium</button>
+          </div>
+
+          <!-- Mobile Menu Toggle -->
+          <button
+            class="navbar-toggler ms-auto"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mobileMenu"
+            aria-controls="mobileMenu"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <!-- Collapsible Menu for Mobile -->
+        <div class="collapse navbar-collapse" id="mobileMenu">
+          <ul class="navbar-nav mx-auto text-center d-lg-none">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- temporary email Address section -->
+      <div class="row mx-2">
+        <div class="col-lg-5 col-md-8 col-12 mx-auto">
+          <div class="box">
+            <h4>Your Temporary Email Address</h4>
+            <div class="tem-email-sec">
+              <div
+                class="container-fluid my-2 d-flex flex-lg-row flex-md-row flex-column justify-content-center align-items-center"
+              >
+                <div
+                  class="main-input position-relative d-flex align-items-center flex-lg-row flex-md-row flex-row bg-dark text-white rounded-pill px-3 py-2"
+                  style="width: 100%; max-width: 800px"
+                >
+                  <!-- Email Text -->
+                  <input
+                    class="flex-grow-1"
+                    id="emailText"
+                    style="
+                      font-family: 'Fira Code', monospace;
+                      background: transparent;
+                      border: none;
+                      box-shadow: none;
+                      outline: none;
+                      color: #fff !important;
+                    "
+                    value="rapagex206@gotemv.com"
+                    readonly
+                    type="text"
+                  />
+
+                  <!-- QR Button -->
+                  <button
+                    class="btn p-4 d-flex justify-content-center align-items-center rounded-circle ms-2"
+                    onclick="toggleQR()"
+                    style="
+                      width: 40px;
+                      height: 40px;
+                      background-color: #ffffff26;
+                    "
+                  >
+                    <img src="./assets/img/qr.svg" alt="" />
+                    <!-- You can replace with an icon or emoji -->
+                  </button>
+
+                  <!-- QR Code Popup -->
+                  <div
+                    id="qrPopup"
+                    class="position-absolute bg-white p-2 rounded shadow"
+                    style="top: 110%; right: 0; display: none"
+                  >
+                    <img
+                      src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=rapagex206@gotemv.com"
+                      alt="QR Code"
+                    />
+                  </div>
+                </div>
+                <!-- Copy Button -->
+                <button
+                  class="d-flex justify-content-center align-items-center btn btn-success p-4 rounded-circle ms-2"
+                  onclick="copyEmail()"
+                  style="width: 40px; height: 40px"
+                >
+                  <img src="./assets/img/copy.svg" alt="" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <p class="text-center para-1">
+            Forget about spam, advertising mailings, hacking and attacking
+            robots. Keep your real mailbox clean and secure. Temp Mail provides
+            temporary, secure, anonymous, free, disposable email address.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!----------------------------------------------- Header End ----------------------------------------------->
+    <!----------------------------------------------- Action button ----------------------------------------------->
+    <section class="action-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-auto">
+            <div class="action-buttons">
+              <button class="btn action-btn btn-copy" onclick="copyEmail()">
+                <i class="bi bi-clipboard fw-bold"></i>
+                Copy
+              </button>
+              <button
+                class="btn action-btn btn-refresh"
+                onclick="handleRefresh()"
+              >
+                <i class="bi bi-arrow-clockwise"></i>
+                Refresh
+              </button>
+              <button
+                class="btn action-btn btn-change"
+                onclick="handleChange()"
+              >
+                <i class="bi bi-pencil"></i>
+                Change
+              </button>
+              <button
+                class="btn action-btn btn-delete"
+                onclick="handleDelete()"
+              >
+                <i class="bi bi-x-lg"></i>
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!----------------------------------------------- Action butoon end ----------------------------------------------->
+
+    <!----------------------------------------------- sender-subject-view ----------------------------------------------->
+    <section class="sender-sec">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+            <div class="inbox-container">
+              <!-- Header Row -->
+              <div class="inbox-header">
+                <div class="row">
+                  <div class="col-3 col-md-3">
+                    <div class="text-center">SENDER</div>
+                  </div>
+                  <div class="col-6 col-md-6">
+                    <div class="text-center">SUBJECT</div>
+                  </div>
+                  <div class="col-3 col-md-3">
+                    <div class="text-center">VIEW</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Body Content -->
+              <div class="inbox-body">
+                <div class="row justify-content-center">
+                  <div class="col-12 text-center">
+                    <div class="empty-state-icon">
+                      <svg
+                        width="92"
+                        height="94"
+                        viewBox="0 0 92 87"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M26 54.37V38.9C26.003 37.125 26.9469 35.4846 28.48 34.59L43.48 25.84C45.027 24.9468 46.933 24.9468 48.48 25.84L63.48 34.59C65.0285 35.4745 65.9887 37.1167 66 38.9V54.37C66 57.1314 63.7614 59.37 61 59.37H31C28.2386 59.37 26 57.1314 26 54.37Z"
+                          fill="#8C92A5"
+                        ></path>
+                        <path
+                          d="M46 47.7L26.68 36.39C26.2325 37.1579 25.9978 38.0312 26 38.92V54.37C26 57.1314 28.2386 59.37 31 59.37H61C63.7614 59.37 66 57.1314 66 54.37V38.9C66.0022 38.0112 65.7675 37.1379 65.32 36.37L46 47.7Z"
+                          fill="#CDCDD8"
+                        ></path>
+                        <path
+                          d="M27.8999 58.27C28.7796 58.9758 29.8721 59.3634 30.9999 59.37H60.9999C63.7613 59.37 65.9999 57.1314 65.9999 54.37V38.9C65.9992 38.0287 65.768 37.1731 65.3299 36.42L27.8999 58.27Z"
+                          fill="#E5E5F0"
+                        ></path>
+                        <path
+                          class="emptyInboxRotation"
+                          d="M77.8202 29.21L89.5402 25.21C89.9645 25.0678 90.4327 25.1942 90.7277 25.5307C91.0227 25.8673 91.0868 26.348 90.8902 26.75L87.0002 34.62C86.8709 34.8874 86.6407 35.0924 86.3602 35.19C86.0798 35.2806 85.7751 35.2591 85.5102 35.13L77.6502 31.26C77.2436 31.0643 76.9978 30.6401 77.0302 30.19C77.0677 29.7323 77.3808 29.3438 77.8202 29.21Z"
+                          fill="#E5E5F0"
+                        ></path>
+                        <path
+                          class="emptyInboxRotation"
+                          d="M5.12012 40.75C6.36707 20.9791 21.5719 4.92744 41.2463 2.61179C60.9207 0.296147 79.4368 12.3789 85.2401 31.32"
+                          stroke="#E5E5F0"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                        <path
+                          class="emptyInboxRotation"
+                          d="M14.18 57.79L2.46001 61.79C2.03313 61.9358 1.56046 61.8088 1.2642 61.4686C0.967927 61.1284 0.906981 60.6428 1.11001 60.24L5.00001 52.38C5.12933 52.1127 5.35954 51.9076 5.64001 51.81C5.92044 51.7194 6.22508 51.7409 6.49001 51.87L14.35 55.74C14.7224 55.9522 14.9394 56.36 14.9073 56.7874C14.8753 57.2149 14.5999 57.5857 14.2 57.74L14.18 57.79Z"
+                          fill="#E5E5F0"
+                        ></path>
+                        <path
+                          class="emptyInboxRotation"
+                          d="M86.9998 45.8C85.9593 65.5282 70.9982 81.709 51.4118 84.2894C31.8254 86.8697 13.1841 75.1156 7.06982 56.33"
+                          stroke="#E5E5F0"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                      </svg>
+                    </div>
+                    <h3 class="empty-state-title">Your inbox is empty</h3>
+                    <p class="empty-state-subtitle">
+                      Waiting for incoming emails
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-5">
+          <div class="col-lg-6 col-md-8 col-12 mx-auto text-center">
+            <h3 class="fw-bold pb-4">What is Disposable Temporary E-mail?</h3>
+            <p style="color: #7a7c80">
+              <b style="color: #21232a">Disposable email -</b> is a free email
+              service that allows to receive email at a temporary address that
+              self-destructed after a certain time elapses. It is also known by
+              names like : tempmail, 10minutemail, 10minmail, throwaway email,
+              fake-mail , fake email generator, burner mail or trash-mail. Many
+              forums, Wi-Fi owners, websites and blogs ask visitors to register
+              before they can view content, post comments or download something.
+              Temp-Mail - is most advanced throwaway email service that helps
+              you avoid spam and stay safe.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!----------------------------------------------- sender-subject-view ----------------------------------------------->
+    <!----------------------------------------------- Popular Articles ----------------------------------------------->
+    <section class="article">
+      <div class="container">
+        <div class="row" style="gap: 50px 0">
+          <div class="col-12 text-center">
+            <h3 class="fw-bold pb-0">Popular Articles</h3>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <a href="#!" class="article-box">
+              <div class="article-one-side">
+                <h6>
+                  Private domains. How to get your own Temporary Email (2021)
+                </h6>
+                <p>
+                  How to create temporary email on your own private domain and
+                  how it helps you to bypass common issues with registrations.
+                </p>
+              </div>
+              <div class="article-second-side">
+                <img src="./assets/img/article-1.webp" alt="" />
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <a href="#!" class="article-box">
+              <div class="article-one-side">
+                <h6>
+                  Private domains. How to get your own Temporary Email (2021)
+                </h6>
+                <p>
+                  How to create temporary email on your own private domain and
+                  how it helps you to bypass common issues with registrations.
+                </p>
+              </div>
+              <div class="article-second-side">
+                <img src="./assets/img/article-1.webp" alt="" />
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <a href="#!" class="article-box">
+              <div class="article-one-side">
+                <h6>
+                  Private domains. How to get your own Temporary Email (2021)
+                </h6>
+                <p>
+                  How to create temporary email on your own private domain and
+                  how it helps you to bypass common issues with registrations.
+                </p>
+              </div>
+              <div class="article-second-side">
+                <img src="./assets/img/article-1.webp" alt="" />
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <a href="#!" class="article-box">
+              <div class="article-one-side">
+                <h6>
+                  Private domains. How to get your own Temporary Email (2021)
+                </h6>
+                <p>
+                  How to create temporary email on your own private domain and
+                  how it helps you to bypass common issues with registrations.
+                </p>
+              </div>
+              <div class="article-second-side">
+                <img src="./assets/img/article-1.webp" alt="" />
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <a href="#!" class="article-box">
+              <div class="article-one-side">
+                <h6>
+                  Private domains. How to get your own Temporary Email (2021)
+                </h6>
+                <p>
+                  How to create temporary email on your own private domain and
+                  how it helps you to bypass common issues with registrations.
+                </p>
+              </div>
+              <div class="article-second-side">
+                <img src="./assets/img/article-1.webp" alt="" />
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <a href="#!" class="article-box">
+              <div class="article-one-side">
+                <h6>
+                  Private domains. How to get your own Temporary Email (2021)
+                </h6>
+                <p>
+                  How to create temporary email on your own private domain and
+                  how it helps you to bypass common issues with registrations.
+                </p>
+              </div>
+              <div class="article-second-side">
+                <img src="./assets/img/article-1.webp" alt="" />
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!----------------------------------------------- Popular Articles End ----------------------------------------------->
+    <!----------------------------------------------- content ----------------------------------------------->
+    <section class="content pt-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h5 class="fw-bold pb-2">
+              The Tech behind Disposable Email Addresses
+            </h5>
+            <p>
+              Everyone owns an email address each and every hour, for everything
+              from connecting at work, with business prospects, reaching out to
+              friends and colleagues using the email address as an online
+              passport. Nearly 99% of all apps and services we sign-up today
+              required an email address, likewise to most shoppers loyalty
+              cards, contest and offer entries, and more.
+            </p>
+            <p>
+              We all enjoy having an email address, but getting tons of spam
+              emails each day doesn’t feel comfortable. Furthermore, it’s
+              entirely common for stores to have their databases hacked, leaving
+              your business email address at risk and more likely to end up on
+              spam lists. Still, nothing done online is 100% private. Thus you
+              need to protect your email contact identity and best done using
+              disposable emails address.
+            </p>
+          </div>
+          <div class="col-12 pt-3">
+            <h5 class="fw-bold pb-2">
+              So, What Is A Disposable Email Address?
+            </h5>
+            <p>
+              Recently, I found a bounce rate complex than usual on my latest
+              email blast! I later realized the surge of users (or bots) signing
+              up for my services hiding their real identity using disposable
+              mail addresses.
+            </p>
+            <p>
+              Disposable email address (DEA) technically means an approach where
+              a user’s with a unique email address gets a temporary email
+              address for your current contact. The DEA allow the creation of an
+              email address that passes validity need to sign-up for services
+              and website without having to show your true identity.
+            </p>
+            <p>
+              Disposable emails address if compromised or used in connection
+              with email abuse online, the owner can’t be tied to the abuse and
+              quickly cancel its application without affecting other contacts.
+              With temporary mail, you can you receive your emails from the fake
+              emails in your genuine emails address for a specified time set.
+              The fake email address is simply a through-away email, temporary
+              email set and self-destructs email.
+            </p>
+          </div>
+          <div class="col-12 pt-3">
+            <h5 class="fw-bold pb-2">
+              Why would you need a fake email address?
+            </h5>
+            <p>
+              You must have noted services such as Amazon Prime, Hulu and
+              Netflix allow limited-time test runs(trials), however, if still
+              determined to use the services all you need is a disposable email
+              address. Technically, you can extend your trial usage using a
+              different email address linked to your original (genuine) after
+              the trial period expires.
+            </p>
+            <p>
+              An offline or online retailer tend to demand an email address to
+              take advantage of their offers, however, this result in an
+              unwanted deluge of spam promotional emails that you could avoid.
+              Temporary email address makes it easy to cut out those irritating
+              messages you are still receiving.
+            </p>
+            <p>
+              Technically, the idea of a temporary email address conjures up
+              with black hat hackers and underworld internet, but there are
+              convincing reason to us fake email services.
+            </p>
+            <p>
+              If you are looking for legitimate reasons to use a disposable
+              email address here’s a few:
+            </p>
+            <ul>
+              <li>
+                <h6 class="fw-bold">Sign-Up For Store Loyalty Card</h6>
+                If you don’t want to get promotional emails from the store
+                adverting new products, use a disposable email address instead
+                of your business email address, and you rule out spam emails. If
+                the store gets hacked for email, you real email address won’t
+                get stolen.
+              </li>
+              <li>
+                <h6 class="fw-bold">Sign-Up For Store Loyalty Card</h6>
+                If you don’t want to get promotional emails from the store
+                adverting new products, use a disposable email address instead
+                of your business email address, and you rule out spam emails. If
+                the store gets hacked for email, you real email address won’t
+                get stolen.
+              </li>
+              <li>
+                <h6 class="fw-bold">Sign-Up For Store Loyalty Card</h6>
+                If you don’t want to get promotional emails from the store
+                adverting new products, use a disposable email address instead
+                of your business email address, and you rule out spam emails. If
+                the store gets hacked for email, you real email address won’t
+                get stolen.
+              </li>
+              <li>
+                <h6 class="fw-bold">Sign-Up For Store Loyalty Card</h6>
+                If you don’t want to get promotional emails from the store
+                adverting new products, use a disposable email address instead
+                of your business email address, and you rule out spam emails. If
+                the store gets hacked for email, you real email address won’t
+                get stolen.
+              </li>
+              <li>
+                <h6 class="fw-bold">Sign-Up For Store Loyalty Card</h6>
+                If you don’t want to get promotional emails from the store
+                adverting new products, use a disposable email address instead
+                of your business email address, and you rule out spam emails. If
+                the store gets hacked for email, you real email address won’t
+                get stolen.
+              </li>
+            </ul>
+          </div>
+          <div class="col-12">
+            <h5 class="fw-bold pb-2">
+              The Tech behind Disposable Email Addresses
+            </h5>
+            <p>
+              Everyone owns an email address each and every hour, for everything
+              from connecting at work, with business prospects, reaching out to
+              friends and colleagues using the email address as an online
+              passport. Nearly 99% of all apps and services we sign-up today
+              required an email address, likewise to most shoppers loyalty
+              cards, contest and offer entries, and more.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!----------------------------------------------- content End ----------------------------------------------->
+    <!----------------------------------------------- Footer ----------------------------------------------->
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-ms-12 col-md-12 col-lg-12">
+            <div class="footer-box">
+              <nav class="footer-nav">
+                <ul>
+                  <li><a href="#" class="no-ajaxy goPremiumBtn">PREMIUM</a></li>
+                  <li><a href="#!" title="API">API</a></li>
+                  <li>
+                    <a href="/#!" title="Articles" class="no-ajaxy">Articles</a>
+                  </li>
+                  <li>
+                    <a href="#!" title="10 MINUTE MAIL" class="no-ajaxy"
+                      >10 MINUTE MAIL</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#!" title="Email Generator" class="no-ajaxy"
+                      >Email Generator</a
+                    >
+                  </li>
+                  <li><a href="#!" title="Privacy">Privacy</a></li>
+                  <li><a href="#!" title="Terms">Terms</a></li>
+                  <li><a href="#!" title="FAQ">FAQ</a></li>
+                  <li><a href="#!" title="Contacts">Contacts</a></li>
+                  <li>
+                    <a
+                      href="#!"
+                      rel="nofollow"
+                      title="Advertising"
+                      target="_blank"
+                      >Advertising</a
+                    >
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="col-10 mx-auto">
+            <div class="divider"></div>
+          </div>
+          <div class="col-xs-12 col-ms-12 col-md-12 col-lg-12">
+            <div class="footer-box">
+              <nav class="footer-nav">
+                <ul class="second-ul">
+                  <li>
+                    <a href="#" class="btn">
+                      <img src="./assets/img/itunes_header.svg" alt="" /> App
+                      Store
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="btn">
+                      <img src="./assets/img/gplay_header.svg" alt="" /> Google Play
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="btn p-0" style="padding: 5px !important;">
+                      <img src="./assets/img/amazon.svg" style="width: 30px;" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="btn p-0" style="padding: 5px !important;">
+                      <img src="./assets/img/chrome.svg" style="width: 30px;" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="btn p-0" style="padding: 5px !important;">
+                      <img src="./assets/img/firefox.svg" style="width: 30px;" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="btn p-0" style="padding: 5px !important;">
+                      <img src="./assets/img/download.png" style="width: 30px;" alt="" />
+                    </a>
+                  </li>
+                  
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!----------------------------------------------- Footer End ----------------------------------------------->
+
+    <!-- Bootstrap 5 JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- custom Script -->
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>

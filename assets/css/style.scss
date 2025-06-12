@@ -1,0 +1,418 @@
+// Variables
+$primary: #0d6efd;
+$text: #333;
+$bg: #f8f9fa;
+$font: 'Segoe UI',
+sans-serif;
+
+// Mixins
+@mixin center {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+// Base
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   margin: 0;
+   width: auto !important;
+   font-family: 'Fira Code', monospace !important;
+   font-size: 1rem;
+   font-weight: 400;
+   line-height: 1.5;
+   color: #212529;
+   text-align: left;
+   background-color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+   font-family: 'Fira Code', monospace !important;
+}
+
+/* Apply sans-serif to all paragraphs */
+p {
+   font-family: sans-serif !important;
+   margin-bottom: 1rem;
+}
+
+.btn-success {
+   background-color: #00c497 !important;
+}
+
+// Container
+.container {
+   width: 90%;
+   max-width: 1200px;
+   margin: 0 auto;
+}
+
+// Button
+.btn {
+   padding: 0.5rem 1rem;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+
+   &.primary {
+      background-color: $primary;
+      color: #fff;
+   }
+}
+
+// Utility
+.text-center {
+   text-align: center;
+}
+
+// btn-store
+.btn-store {
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   gap: 0 20px;
+
+   button {
+      font-size: 12px;
+      font-weight: 500;
+      border-radius: 12px;
+      line-height: 20px;
+      text-decoration: none;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid #393c45;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-family: sans-serif !important;
+
+      &:hover {
+         background-color: #343a40;
+         border-color: #343a40;
+      }
+   }
+}
+
+.btn-store-2 {
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   gap: 0 10px;
+
+   .temp {
+      font-size: 14px;
+      padding: 8px 15px;
+      background: #2e3038;
+      border-radius: 25px;
+      margin-right: 10px;
+      color: #fff;
+      font-family: sans-serif !important;
+
+      &:hover {
+         background: #3c3e48 !important;
+      }
+   }
+
+   .prem {
+      font-size: 14px;
+      padding: 8px 15px;
+      color: #000;
+      background: #ff0;
+      border-radius: 25px !important;
+
+      &:hover {
+         background: #3c3e48 !important;
+         color: #fff;
+      }
+   }
+}
+
+// Box Email
+.box {
+   display: flex;
+   flex-direction: column;
+   color: #fff;
+   justify-content: center;
+   align-items: center;
+   margin-top: 50px;
+   border: 4px dashed #383b44;
+   width: 90%;
+   margin: 20px auto;
+   padding: 30px 10px;
+   border-radius: 10px;
+
+   h4 {
+      font-size: 19px;
+      font-weight: 600;
+      margin-bottom: 20px;
+
+   }
+
+   .tem-email-sec {
+      width: 100%;
+   }
+
+   .main-input {
+      background-color: #2e3038 !important;
+      border-radius: 50px !important;
+      padding: 7px 7px 7px 20px !important;
+   }
+
+}
+
+.para-1 {
+   font-family: monospace !important;
+   color: #7a7c80 !important;
+   font-size: 14px !important;
+}
+
+// Action buttons section
+.action-section {
+   background-color: #fff;
+   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+   padding-bottom: 30px;
+
+   .action-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+
+      button {
+         box-shadow: 0 2px 4px rgba(34, 36, 43, .16) !important;
+         margin: 0 9px !important;
+         padding: 13px 15px 13px 15px !important;
+         display: flex;
+         position: relative !important;
+         min-width: 160px !important;
+         font-weight: 500 !important;
+         font-size: 16px !important;
+         text-decoration: none !important;
+         text-align: center !important;
+         background-color: #f6f7f9;
+         color: #22242b !important;
+         border-radius: 20px;
+         justify-content: center;
+         align-items: center;
+         gap: 0 10px;
+
+         &:hover {
+            background-color: #00c497;
+            color: #fff !important;
+         }
+      }
+   }
+}
+
+.sender-sec {
+   padding-top: 30px;
+   padding-bottom: 30px;
+   background-color: #f6f7f9;
+
+   .inbox-container {
+      border-radius: 12px;
+
+      .inbox-header {
+         background-color: #212529;
+         color: #fff;
+         border-top-right-radius: 12px;
+         border-top-left-radius: 12px;
+         padding: 20px 0;
+         font-weight: 600;
+      }
+
+      .inbox-body {
+         background-color: #fff;
+         height: 300px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         border-radius: 12px;
+
+         .empty-state-title {
+            font-size: 20px;
+            color: #333;
+            margin-top: 15px;
+         }
+
+         .empty-state-subtitle {
+            color: #7a7c80;
+            font-family: monospace !important;
+         }
+      }
+   }
+
+   // Animation for Envelope
+   /* Add this to your CSS file or inside a <style> tag in your HTML */
+   .emptyInboxRotation {
+      transform-origin: 46px 43.5px;
+      /* Center of the SVG */
+      animation: rotateArrow 2s linear infinite;
+   }
+
+   @keyframes rotateArrow {
+      100% {
+         transform: rotate(360deg);
+      }
+   }
+}
+
+// article
+.article {
+   padding: 30px 0;
+   background-color: #f6f7f9;
+
+   .article-box {
+      border: 1px solid #fff;
+      background-color: #fff;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 20px;
+      display: flex;
+      text-decoration: none;
+      gap: 0 20px;
+
+      p {
+         font-size: 14px;
+         padding-top: 10px;
+         color: #8c92a5;
+         margin: 0;
+
+      }
+
+      h6 {
+         color: #22242b !important;
+         font-family: sans-serif !important;
+         line-height: 25px;
+      }
+   }
+}
+
+// content
+.content {
+   background-color: #f6f7f9;
+   padding-bottom: 30px;
+
+   p {
+      color: #585d6a;
+   }
+
+   ul,
+   h6 {
+      font-family: sans-serif !important;
+
+      li {
+         padding-bottom: 20px;
+      }
+   }
+
+}
+
+// Footer
+.page-footer {
+   background-color: #212529;
+   color: #fff;
+   padding: 20px 0;
+   text-align: center;
+
+   p {
+      margin: 0;
+      font-size: 14px;
+      color: #adb5bd;
+   }
+
+   a {
+      text-decoration: none;
+   }
+   .footer-nav{
+      padding-top: 10px;
+      ul{
+         display: flex;
+         list-style: none;
+         gap: 0 30px;
+         text-align: center;
+         justify-content: center;
+         align-items: center;
+         flex-wrap: wrap;
+         li{
+            a{
+               color: #a7a7aa !important;
+               &:hover{
+                  color: #3cebc2a8 !important;
+               }
+            }
+            .btn{
+               background-color: #343a40 !important;
+               color: #a7a7aa !important;
+               border: 1px solid #343a40 !important;
+               padding: 10px 20px !important;
+               font-size: 14px !important;
+               font-weight: 500 !important;
+               border-radius: 10px;
+
+               &:hover {
+                  background-color: #00c497 !important;
+                  color: #fff !important;
+                  border-color: #00c497 !important;
+               }
+            }
+         }
+      }
+      .second-ul{
+         gap: 0 10px !important;
+         padding-top: 10px;
+      }
+   }
+   .divider{
+      width: 100%;
+      height: 1px;
+      background-color: #343a40;
+      margin: 10px 0;
+   }
+}
+
+
+// Media Queries
+@media only screen and (max-width: 767.5px){
+.article-box{
+   flex-direction: column;
+   img{
+      width: 100%;
+      object-fit: contain;
+      padding: 0 10px;
+   }
+}
+.page-footer .footer-nav ul{
+   padding-left: 0;
+}
+.page-footer .footer-nav ul li {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.page-footer .footer-nav .second-ul li {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   padding-bottom: 10px;
+}
+.box{
+   padding: 30px 0;
+   width: 100%;
+}
+.action-section .action-buttons button{
+ width: 100%;
+}
+}
